@@ -1,0 +1,21 @@
+.footer-section{
+    height: 123.49px;
+    top: 3377.53px;
+    
+    background: #6D18D1;
+}
+.footer-content{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.4368px;
+    line-height: 23px;
+    
+    /* identical to box height, or 150% */
+    text-align: right;
+    
+    /* Primary/300 */
+    color: #D6BBFB;
+    
+    
+}

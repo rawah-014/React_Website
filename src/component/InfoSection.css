@@ -1,0 +1,48 @@
+.info-section{
+    padding: 92.6206px 0px;
+    gap: 61.75px;
+    isolation: isolate;
+    
+    width: 1389.31px;
+    height: 377.86px;
+    
+    background: #FFFFFF;
+}
+.info-header{
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19.296px;
+    line-height: 29px;
+    
+    /* identical to box height, or 150% */
+    text-align: center;
+    
+    color: #101828;
+}
+.info-content{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.4368px;
+    line-height: 23px;
+    
+    /* identical to box height, or 150% */
+    text-align: center;
+    
+    color: #667085;
+}
+.info-contact{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    
+    /* identical to box height, or 150% */
+    text-align: center;
+    
+    /* #882DF1 */
+    color: #882DF1;
+}

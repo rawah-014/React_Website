@@ -1,0 +1,87 @@
+.contact-setion{
+    height: 779.64px;
+left: 0.35px;
+top: 2250.64px;
+
+
+background: rgba(136, 45, 241, 0.08) !important;
+}
+.title{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 34.7327px;
+line-height: 42px;
+
+/* identical to box height, or 122% */
+text-align: center;
+letter-spacing: -0.02em;
+
+/* #882DF1 */
+color: #882DF1 ;
+}
+.contact-content{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 19.296px;
+line-height: 29px;
+
+/* identical to box height, or 150% */
+text-align: center;
+
+/* Gray/500 */
+color: #667085;
+
+
+}
+.contact-label{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.5072px;
+    line-height: 19px;
+    
+    /* identical to box height, or 143% */
+    
+    /* Gray/700 */
+    color: #344054;
+}
+.contact-input{
+    background: #FFFFFF !important;
+border: 0.964798px solid #FDFDFD;
+box-shadow: 0px 0.964798px 10px rgba(16, 24, 40, 0.02);
+border-radius: 7.71838px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 15.4368px;
+line-height: 23px;
+
+/* identical to box height, or 150% */
+
+/* Gray/500 */
+color: #667085 !important;
+}
+.contact-button{
+    background: #882DF1 !important;
+border: 0.964798px solid rgba(255, 255, 255, 0.16) !important;
+box-shadow: 0px 8.68318px 19.296px -4.82399px rgba(136, 45, 241, 0.2) !important;
+border-radius: 15.4368px !important;
+
+}
+.contact-btn-text{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 15.4368px;
+line-height: 23px;
+
+/* identical to box height, or 150% */
+
+/* Base/White */
+color: #FFFFFF;
+
+
+}

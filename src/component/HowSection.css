@@ -1,0 +1,155 @@
+.box-container-active{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 15.4368px 0px 15.4368px 23.1551px;
+gap: 19.3px;
+
+
+background: rgba(136, 45, 241, 0.08);
+
+/* #882DF1 */
+border-left: 3.85919px solid #882DF1;
+border-radius: 11.5776px;
+}
+.active-h{
+    /* Text xl/Medium */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+color: #882DF1;
+}
+.active-p{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+
+color: #882DF1;
+opacity: 0.8;
+}
+.box-container{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 15.4368px 0px 15.4368px 23.1551px;
+gap: 19.3px;
+
+    background: #FFFFFF;
+    border-left: 3.85919px solid #F0ECFA;
+    border-radius: 11.5776px;
+}
+.h{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19.296px;
+    line-height: 29px;
+    
+    /* identical to box height, or 150% */
+    
+    /* Gray/900 */
+    color: #101828;
+    
+}
+.p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.4368px;
+    line-height: 23px;
+    
+    /* or 150% */
+    
+    /* Gray/500 */
+    color: #667085;
+}
+.form-container{
+padding: 0px;
+left: 0px;
+top: 0px;
+
+background: linear-gradient(0deg, #6816C8, #6816C8), #1C1B4E;
+box-shadow: 0px 2.89439px 27.0143px rgba(255, 255, 255, 0.1);
+border-radius: 19.296px;
+}
+.form-header{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30.8735px;
+line-height: 37px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+}
+.label{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+
+/* identical to box height, or 143% */
+
+/* #FFFFFF */
+color: #FFFFFF;
+
+}
+.input-style{
+    align-items: center;
+padding: 9.64798px 13.5072px;
+gap: 7.72px;
+
+width: 370.48px;
+height: 50.17px;
+
+background: linear-gradient(0deg, #6816C8, #6816C8), #1C1B4E !important;
+border: 0.964798px solid #E7E3EB;
+
+/* Shadow/xs */
+box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+border-radius: 7.71838px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+
+/* identical to box height, or 150% */
+
+color: #FFFFFF !important;
+}
+.iccon{
+    background: rgba(255, 255, 255, 0.06);
+}
+.submit-button{
+    padding: 14.472px;
+height: 47.94px;
+
+background-color: #FF8B00 !important;
+border-radius: 9.64798px;
+
+}
+.submit-text{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 15.4368px;
+line-height: 19px;
+
+/* identical to box height */
+
+color: #FFFFFF;
+}
+.progress-custom{
+    color:  #FF8B00 !important;;
+}

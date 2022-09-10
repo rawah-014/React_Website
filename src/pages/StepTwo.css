@@ -1,0 +1,79 @@
+.cup-section{
+    height: auto;
+left: 800px;
+top: 348.08px;
+
+background: #9D4EF9;
+box-shadow: 9.72152px 12.1519px 19.443px rgba(0, 0, 0, 0.05);
+backdrop-filter: blur(14.5823px);
+
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 17.8605px;
+}
+.step-header{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 16.8046px;
+line-height: 20px;
+
+color: #FFFFFF;
+}
+.step-content{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14.472px;
+line-height: 18px;
+
+/* identical to box height */
+text-transform: uppercase;
+
+/* Base/White */
+color: #FFFFFF;
+}
+.points{
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 22.4177px;
+line-height: 27px;
+
+color: #FFFFFF;
+}
+.step3-content{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+}
+.res-food{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+}
+.res-food-des{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #FFFFFF;
+}
