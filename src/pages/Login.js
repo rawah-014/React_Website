@@ -1,17 +1,55 @@
+import React, { Fragment, useState, useEffect } from 'react'
+
 import { Container, Row, Col } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../component/NavBar.css";
 //import Image from 'react-bootstrap/Image'
 import logo from "../assets/logo.png";
-import login from "../assets/icons/login.png";
+import loginlogo from "../assets/icons/login.png";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../component/GetInTouchSection.css";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
-function Login() {
+import { useAlert } from 'react-alert'
+import { useDispatch, useSelector } from 'react-redux'
+import { login, clearErrors } from '../redux/actions/userActions'
+
+
+function Login({ history, location }) {
+
+   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const alert = useAlert();
+  const dispatch = useDispatch();
+
+  const { isAuthenticated, error, loading } = useSelector(state => state.auth);
+
+  //const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  useEffect(() => {
+
+      if (isAuthenticated) {
+          history.push('/StepOne')
+          alert.success('Product created successfully');
+      }
+
+      if (error) {
+          alert.error(error);
+          dispatch(clearErrors());
+      }
+
+  }, [dispatch, isAuthenticated, error, history])
+
+  const submitHandler = (e) => {
+      e.preventDefault();
+      dispatch(login(email, password))
+  } /* 
+ */
+
   return (
     <div>
       <Row>
@@ -51,7 +89,7 @@ function Login() {
         <Row className=" text-center">
           <Container>
             <div className="logo-login">
-              <img src={login} />
+              <img src={loginlogo} />
             </div>
             <h className="title-login">Log in to your account</h>
             <p className="login-content w-100 pt-3">
@@ -61,14 +99,18 @@ function Login() {
           <Container className="mt-5">
             <Row>
               <Col md={{ span: 3, offset: 4 }} className="w-50">
-                <Form className="text-start">
+                <Form className="text-start"  onSubmit={submitHandler} >
                   <Row className="mt-4">
                     <Col md={8}>
                       <Form.Group>
                         <Form.Label className="login-label">Email</Form.Label>
                         <Form.Control
                           className="login-input"
-                          type="text"
+                          type="email"
+                           id="email_field"
+                        
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)} 
                           placeholder="Email"
                           defaultValue={"you@company.com"}
                         />
@@ -84,7 +126,10 @@ function Login() {
                         <Form.Control
                           className="login-input"
                           type="password"
-                          placeholder="Password"
+                           id="password_field"
+                           placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)} 
                         />
                       </Form.Group>
                     </Col>
@@ -96,14 +141,15 @@ function Login() {
                   </Row>
                   <Row className="mt-4">
                     <Col md={8}>
-                      <Link to={"/StepOne"}>
+                      
                         <Button
                           className="contact-button w-100 p-2"
                           type="submit"
+                          id="login_button"
                         >
                           <span className="contact-btn-text"> Login</span>
                         </Button>
-                      </Link>
+                    
                     </Col>
                   </Row>
                   <Row className="text-center mt-4">
