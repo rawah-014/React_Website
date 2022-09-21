@@ -16,10 +16,16 @@ import StepFour from "./pages/StepFour";
 import StepThree from "./pages/StepThree";
 import StepTwo from "./pages/StepTwo";
 import StepTwoPoints from "./pages/StepTwoPoints";
+import { useSelector } from 'react-redux'
+
+import ProtectedRoute from './route/ProtectedRoute'
 
 
 
 function App() {
+
+  const { user, isAuthenticated, loading } = useSelector(state => state.auth)
+
   return (
     <div >
      {/*  <Home /> */}
