@@ -1,3 +1,4 @@
+import React, { Fragment, useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 //import Image from 'react-bootstrap/Image'
 import logo from "../assets/logo.png";
@@ -12,7 +13,83 @@ import { Link } from "react-router-dom";
 
 import { ProgressBar } from "react-step-progress-bar";
 
-function StepOne() {
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { newStepone, clearErrors } from "../redux/actions/steponeActions";
+import { NEW_STEPONE_RESET  } from "../redux/constants/steponeConstants";
+
+function StepOne({ history }) {
+
+  const [name, setName] = useState("");
+  const [ownerName, setOwnerName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [businessTypeId, setBusinessTypeId] = useState("");
+  const [cityId, setCityId] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([])
+
+  const alert = useAlert();
+  const dispatch = useDispatch();
+
+  const { loading, error, success } = useSelector(state => state.newStepone);
+
+  useEffect(() => {
+
+      if (error) {
+          alert.error(error);
+          dispatch(clearErrors())
+      }
+
+      if (success) {
+          history.push('/StepTwo');
+          alert.success('Product created successfully');
+          dispatch({ type: NEW_STEPONE_RESET })
+      }
+
+  }, [dispatch, alert, error, success, history])
+
+  const submitHandler = (e) => {
+      e.preventDefault();
+
+      const formData = new FormData();
+      formData.set('name', name);
+      formData.set('ownerName', ownerName);
+      formData.set('phone', phone);
+      formData.set('businessTypeId', businessTypeId);
+      formData.set('cityId', cityId);
+
+   
+
+      images.forEach(image => {
+          formData.append('images', image)
+      })
+
+      dispatch(newStepone(formData))
+  }
+
+  const onChange = e => {
+
+      const files = Array.from(e.target.files)
+
+      setImagesPreview([]);
+      setImages([])
+
+      files.forEach(file => {
+          const reader = new FileReader();
+
+          reader.onload = () => {
+              if (reader.readyState === 2) {
+                  setImagesPreview(oldArray => [...oldArray, reader.result])
+                  setImages(oldArray => [...oldArray, reader.result])
+              }
+          }
+
+          reader.readAsDataURL(file)
+      })
+  }
+
+ 
+
   return (
     <div>
       <Row>
@@ -37,7 +114,7 @@ function StepOne() {
                     </p>
                   </Col>
                 </Row>
-                <Form className="text-start">
+                <Form className="text-start"  onSubmit={submitHandler} encType='multipart/form-data'>
                   <Row className="mt-4">
                     <Col md={8}>
                       <Form.Group>
@@ -45,15 +122,19 @@ function StepOne() {
                         <Form.Control
                           className="login-input"
                           type="text"
-                          placeholder="Name"
+                          onChange={(e) => setOwnerName(e.target.value)}
+                          id="ownerName_field"
+                          name="ownerName"
+                          value={ownerName}
+                          placeholder="Owner Name"
                         />
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row className="mt-4">
+                  {/* <Row className="mt-4">
                     <Col md={8}>
                       <Form.Group>
-                        <Form.Label className="login-label">Email</Form.Label>
+                        <Form.Label className="login-label">Owner Name</Form.Label>
                         <Form.Control
                           className="login-input"
                           type="email"
@@ -62,8 +143,40 @@ function StepOne() {
                         />
                       </Form.Group>
                     </Col>
+                  </Row> */}
+                  <Row className="mt-4">
+                    <Col md={8}>
+                      <Form.Group>
+                        <Form.Label className="login-label">Owner Name</Form.Label>
+                        <Form.Control
+                          className="login-input"
+                          type="text"
+                          onChange={(e) => setName(e.target.value)}
+                          id="name_field"
+                          name="name"
+                          value={name}
+                          placeholder="Name"
+                        />
+                      </Form.Group>
+                    </Col>
                   </Row>
                   <Row className="mt-4">
+                    <Col md={8}>
+                      <Form.Group>
+                        <Form.Label className="login-label">Phone</Form.Label>
+                        <Form.Control
+                          className="login-input"
+                          type="number"
+                          onChange={(e) => setPhone(e.target.value)}
+                          id="phone_field"
+                          name="phone"
+                          value={phone}
+                          placeholder="Phone"
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                {/*   <Row className="mt-4">
                     <Col md={8}>
                       <Form.Group>
                         <Form.Label className="login-label">
@@ -90,7 +203,7 @@ function StepOne() {
                         />
                       </Form.Group>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row className="mt-4">
                     <Col md={8}>
                       <Form.Group>
@@ -100,6 +213,11 @@ function StepOne() {
                         <Form.Select
                           aria-label="Business Type"
                           className="login-input"
+                          id="businessTypeId_field"
+                          name="businessTypeId"
+                          required
+                          onChange={(e) => setBusinessTypeId(e.target.value)}
+                          value={businessTypeId}
                         >
                           <option>Business Type</option>
                           <option value="1">One</option>
@@ -125,27 +243,57 @@ function StepOne() {
                             />
                           </Col>
                           <Col md={6}>
-                            <Form.Control
-                              className="login-input"
-                              type="text"
-                              placeholder="Country"
-                              defaultValue={"AEU"}
-                            />
+                          <Form.Select
+                          aria-label="Business Type"
+                          className="login-input"
+                          id="cityId_field"
+                          name="cityId"
+                          required
+                          onChange={(e) => setCityId(e.target.value)}
+                          value={cityId}
+                        >
+                          <option>City</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </Form.Select>
                           </Col>
                         </Row>
+                        <div className='form-group'>
+                                    <label>Images</label>
+
+                                    <div className='custom-file'>
+                                        <input
+                                            type='file'
+                                            name='product_images'
+                                            className='custom-file-input'
+                                            id='customFile'
+                                            onChange={onChange}
+                                            multiple
+                                        />
+                                        <label className='custom-file-label' htmlFor='customFile'>
+                                            Choose Images
+                                     </label>
+                                    </div>
+
+                                    {imagesPreview.map(img => (
+                                        <img src={img} key={img} alt="Images Preview" className="mt-3 mr-2" width="55" height="52" />
+                                    ))}
+
+                                </div>
                       </Form.Group>
                     </Col>
                   </Row>
                   <Row className="mt-4">
                     <Col md={8}>
-                      <Link to={'/StepTwo'}>
+                     
                       <Button
                         className="contact-button w-100 p-2"
                         type="submit"
                       >
                         <span className="contact-btn-text"> Sign in</span>
                       </Button>
-                      </Link>
+                     
                     </Col>
                   </Row>
                   <Row className="text-center mt-4">
