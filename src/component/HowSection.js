@@ -14,9 +14,27 @@ import { BsPersonCircle } from "react-icons/bs";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import { Link } from "react-router-dom";
 
-function HowSection() {
+
+import { useAlert } from 'react-alert'
+import { useDispatch, useSelector } from 'react-redux'
+import { register, clearErrors } from '../redux/actions/userActions'
+
+
+function HowSection({history}) {
   const [validated, setValidated] = useState(false);
   const [value, setValue] = useState(null);
+
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+})
+
+const { name, email, password } = user;
+
+const [avatar, setAvatar] = useState('')
+
+
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -80,7 +98,71 @@ function HowSection() {
               </div> */}
               <div className="m-5">
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Row className="mb-3">
+                    <Form.Group controlId="validationCustom01">
+                      <Form.Label className="label">Name</Form.Label>
+                      <Form.Control
+                        className="input-style"
+                        required
+                        type="text"
+                        placeholder="First name"
+                        defaultValue="Mark"
+                      />
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group
+                      controlId="validationCustomUsername"
+                      className="mt-4"
+                    >
+                      <Form.Label className="label">Email</Form.Label>
+                      <InputGroup hasValidation>
+                        <Form.Control
+                          className="input-style"
+                          type="email"
+                          placeholder="Enter Brand Name"
+                          defaultValue="you@company.com"
+                          aria-describedby="inputGroupPrepend"
+                          required
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          Please choose a Brand Name.
+                        </Form.Control.Feedback>
+                      </InputGroup>
+                    </Form.Group>
+                  </Row>
                   <Row className="mb-3">
+                    <Form.Group controlId="validationCustom01">
+                      <Form.Label className="label">Password</Form.Label>
+                      <Form.Control
+                        className="input-style"
+                        required
+                        type="text"
+                        placeholder="First name"
+                        defaultValue="Mark"
+                      />
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group
+                      controlId="validationCustomUsername"
+                      className="mt-4"
+                    >
+                      <Form.Label className="label">Confirm Password</Form.Label>
+                      <InputGroup hasValidation>
+                        <Form.Control
+                          className="input-style"
+                          type="email"
+                          placeholder="Enter Brand Name"
+                          defaultValue="you@company.com"
+                          aria-describedby="inputGroupPrepend"
+                          required
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          Please choose a Brand Name.
+                        </Form.Control.Feedback>
+                      </InputGroup>
+                    </Form.Group>
+                  </Row>
+                  {/* <Row className="mb-3">
                     <Form.Group controlId="validationCustom01">
                       <Form.Label className="label">Name</Form.Label>
                       <Form.Control
@@ -111,8 +193,8 @@ function HowSection() {
                         </Form.Control.Feedback>
                       </InputGroup>
                     </Form.Group>
-                  </Row>
-                  <Row className="mt-4">
+                  </Row> */}
+                  {/* <Row className="mt-4">
                     <Form.Group controlId="validationCustom03">
                       <Form.Label className="label">Location</Form.Label>
                       <Row>
@@ -141,7 +223,7 @@ function HowSection() {
                             className="input-style"
                             value={value}
                             onChange={setValue}
-                          /> */}
+                          /> *
                         </Col>
                       </Row>
                     </Form.Group>
@@ -150,7 +232,7 @@ function HowSection() {
                       md="3"
                       controlId="validationCustom04"
                     ></Form.Group>
-                  </Row>
+                  </Row> */}
                   <Row className="mt-4 mb-4">
                   <Link to={'/login'} >
                     <Button type="submit" className="submit-button w-100 mb-5">
