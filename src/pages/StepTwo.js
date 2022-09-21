@@ -1,3 +1,4 @@
+import React, { Fragment, useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 //import Image from 'react-bootstrap/Image'
 import logo from "../assets/logo.png";
@@ -15,7 +16,23 @@ import check from"../assets/icons/Frame 13.png"
 import "./StepTwo.css"
 import { Link } from "react-router-dom";
 
-function StepTwo() {
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { newSteptwo, clearErrors } from "../redux/actions/steptwoActions";
+import { NEW_STEPTWO_RESET  } from "../redux/constants/steptwoConstants";
+
+import InputColor from 'react-input-color';
+
+function StepTwo({ history }) {
+
+  const [backgroundTypeId, setBackgroundTypeId] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("");
+  const [brandName, setBrandName] = useState("");
+  const [textColor, setTextColor] = useState("");
+  const [description, setDescription] = useState("");
+  const [rewardsPattern, setRewardsPattern] = useState("");
+  const [codeStyle, setCodeStyle] = useState("");
+  const [color, setColor] = useState("");
   return (
     <div>
       <Row className="mt-5">
@@ -34,6 +51,11 @@ function StepTwo() {
               </p>
             </Col>
           </Row>
+          <InputColor
+        initialValue="#5e72e4"
+        onChange={setColor}
+        placement="right"
+      />
            <Form className="text-start">
               <Row className="mt-4">
               <Col md={8}>
